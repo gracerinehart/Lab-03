@@ -50,14 +50,14 @@ colorado %>%
   slice_max(cases, n = 5) %>%
   select(Date = date, County = county, Cases = cases) %>%
   flextable() %>%
-  set_caption("Most Cumulative Cases")
+  add_header_lines("Most Cumulative Cases")
 
 colorado %>%
   filter(date == my.date) %>%
   slice_max(cases, n = 5) %>%
   select(Date = date, County = county, Cases = new_cases) %>%
   flextable() %>%
-  set_caption("Most New Cases")
+  add_header_lines("Most New Cases")
 ```
 
 # Question 3
@@ -91,7 +91,7 @@ table1 <- joined_data %>%
   slice(1:5) %>%
   select(County = county, Cases = per_capita_cumulative_cases) %>%
   flextable() %>%
-  set_caption("Top 5 Counties with Most Cumulative Cases Per Capita")
+  add_header_lines("Top 5 Counties with Most Cumulative Cases Per Capita")
 table1
 
 table2 <- joined_data %>%
@@ -100,7 +100,7 @@ table2 <- joined_data %>%
   slice(1:5) %>%
   select(County = county, Cases = per_capita_new_cases) %>%
   flextable() %>%
-  set_caption("Top 5 Counties with Most New Cases Per Capita")
+  add_header_lines("Top 5 Counties with Most New Cases Per Capita")
 table2
 ```
 
@@ -121,7 +121,7 @@ top_5_counties <- counties_sum %>%
   select(County = county, Cases = cases_per_100k)
   
 table3 <- flextable(top_5_counties) %>%
-  set_caption("Top 5 Counties by New Cases Per 100,000")
+  add_header_lines("Top 5 Counties by New Cases Per 100,000")
 table3
 
 watchlist <- sum(counties_sum$cases_per_100k > 100, na.rm = TRUE)
